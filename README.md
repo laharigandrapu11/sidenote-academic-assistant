@@ -1,39 +1,38 @@
-# 🧾 BillSleuth – Understand Legal & Policy Docs with AI
+# 📖 SideNote – AI Explainer for Academic Papers
 
-> TL;DR for complex laws, policies, and bills — with summaries, highlights, and pro/con arguments.
+> Understand research papers with AI-powered summaries, glossaries, and inline explanations.
 
 ## 🚀 Overview
 
-**BillSleuth** is an LLM-powered app that helps users — citizens, students, journalists — make sense of dense legal or policy documents by:
-- Summarizing complex language into simple bullet points
-- Highlighting key clauses and potentially controversial parts
-- Generating arguments **for** and **against** the document
-- Allowing natural language Q&A (e.g., “How does this impact small businesses?”)
+**SideNote** is a web app that simplifies academic PDFs and research papers using large language models (LLMs). It helps users:
+- Read papers with **layman-friendly explanations**
+- Get **inline tooltips** for technical terms and equations
+- Generate **custom Q&A** from any section
+- Auto-create a **glossary of terms** and summary per page
 
-> 📌 Built using Hugging Face Transformers, Streamlit, and Python.
+> 📌 Built using Hugging Face Transformers, Streamlit, and PyMuPDF.
 
 ---
 
 ## 🧠 Features
 
-| Feature                | Description |
-|------------------------|-------------|
-| 📄 Document Upload     | Upload or paste legal/policy text (PDF or plain text) |
-| 📝 Summary Generator   | Bullet-point summary in layman’s terms |
-| 🧩 Key Clause Extractor| Highlights important terms, obligations, or conditions |
-| ⚖️ Pro/Con Generator   | AI-written arguments from both perspectives |
-| ❓ Ask a Question       | Natural language Q&A about the document |
+| Feature                 | Description |
+|-------------------------|-------------|
+| 📄 PDF Upload           | Upload any academic paper or textbook chapter |
+| 📝 Simple Explanations  | Paragraph-wise simplification |
+| 🔍 Glossary Generator   | Auto-detects technical terms and defines them |
+| 💬 Ask the Paper        | Let users query any concept in natural language |
+| 🧩 Equation Insight      | Explains key math expressions (if present) |
 
 ---
 
 ## 🔧 Tech Stack
 
 - `Streamlit` – UI
-- `FastAPI` (optional for backend separation)
-- `PyMuPDF` or `pdfminer.six` – PDF parsing
-- `transformers` – Hugging Face model integration
-- `torch` – model support
-- `sentence-transformers` – similarity-based clause highlighting
+- `PyMuPDF` – PDF parsing
+- `transformers` – Hugging Face model interface
+- `sentence-transformers` – for clause-level understanding
+- `torch` – backend ML runtime
 
 ---
 
@@ -42,34 +41,29 @@
 | Task | Model |
 |------|-------|
 | Summarization | `facebook/bart-large-cnn`, `google/pegasus-xsum` |
-| Text Generation (Pro/Con) | `tiiuae/falcon-7b-instruct`, `mistralai/Mistral-7B-Instruct-v0.1` |
+| Text Simplification | `t5-small` (fine-tuned or with few-shot prompts) |
+| Token/Term Highlighting | `bert-base-cased` + keyword extraction |
 | Question Answering | `deepset/roberta-base-squad2` |
-| Clause Extraction | `bert-base-cased` for token classification |
-| Bias Detection (optional) | `roberta-base-openai-detector` |
+| (Optional) Math Parser | `sympy`, `regex`, or prompt-based LLM breakdowns |
 
 ---
 
-## 🔄 Example Input & Output
+## 🔄 Example Input/Output
 
-### Input:
-> PDF: "Digital Privacy Bill – 2024" (10 pages)
-
-### Output:
-- **Summary**: 5 bullet points
-- **Pro**: “Ensures stronger consumer control over data...”
-- **Con**: “May increase compliance costs for startups...”
-- **Highlight**: `"Companies must provide opt-out options..."`
+**Input**: PDF upload of “Attention Is All You Need”  
+**Output**:
+- Summary: 4 main contributions in plain English
+- Glossary:
+  - “Multi-head attention” → “A mechanism that lets the model focus on different parts of a sentence at once.”
+- Inline Q: “What is the point of positional encoding?”  
+  A: “It helps the model know the order of words, since transformers don’t have sequence memory.”
 
 ---
 
 ## 🧪 Run Locally
 
 ```bash
-git clone https://github.com/yourname/billsleuth.git
-cd billsleuth
-
-# Backend + Models
+git clone https://github.com/yourname/sidenote.git
+cd sidenote
 pip install -r requirements.txt
-
-# Launch UI
 streamlit run app.py

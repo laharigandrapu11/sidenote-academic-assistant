@@ -11,7 +11,6 @@
 ✅ Ask natural-language questions about the paper  
 ✅ Automatically extract a glossary of technical terms and their definitions  
 ✅ “Explain Like I’m 12” mode for non-technical summaries  
-✅ Downloadable output (optional)  
 ✅ Runs in Google Colab or locally via Streamlit and ngrok
 
 ---

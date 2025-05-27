@@ -76,7 +76,11 @@ You don’t need to deploy anything — just follow these steps to run the app d
    - A public link will appear — click to launch your app!
 
 ---
+## 🎥 Demo Video
 
+📽️ [Click to watch the demo](https://youtu.be/Aenj0o4qraE)
+
+---
 ## 💡 Notes
 
 - This app runs inside Colab and uses `ngrok` to expose it publicly.
